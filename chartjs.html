@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Implementando o ChartJs</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="chartjs.css">
+</head>
+
+<body>
+
+    <div>
+        <canvas id="myChart"></canvas>
+        <canvas id="myChart2"></canvas>
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    const ctx = document.getElementById('myChart');
+
+    const labels = [
+        '12:00',
+        '13:00',
+        '14:00',
+        '15:00',
+        '16:00',
+        '17:00'
+    ]
+
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Temperatura (°C)',
+                data: [30, 29, 28, 25, 22, 23],
+                backgroundColor: 'red',
+                //borderRadius: 15,
+                borderWidth: 1
+            }, {
+                label: 'Umidade (%)',
+                data: [80, 82, 80, 85, 80, 83],
+                backgroundColor: 'blue',
+                borderWidth: 1
+            }
+            ]
+        },
+        options: {
+            tension: 0.5, // curvinha 
+            scales: {
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Valores' // texto lateral
+                    },
+                    beginAtZero: true
+                },
+
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Horario'
+                    }
+                },
+            }
+        }
+    });
+
+    const labels2 = [
+        'Janeiro',
+        'Fevereiro',
+        'Março',
+        'Abril',
+        'Maio',
+        'Junho'
+    ]
+
+
+    const ctx2 = document.getElementById('myChart2');
+    new Chart(ctx2, {
+        type: 'bar',
+        data: {
+            labels: labels2,
+            datasets: [{
+                label: 'Temperatura Média (°C)',
+                data: [22, 24, 27, 23, 20, 18],
+                backgroundColor: 'rgba(255, 0, 0, 0.1)',
+                borderRadius: 5,
+                borderColor: 'red',
+                borderWidth: 1
+            }, {
+                label: 'Umidade Média (%)',
+                data: [90, 89, 93, 87, 88, 82],
+                borderRadius: 5,
+                backgroundColor: 'rgba(0, 0, 255, 0.1)', 
+                borderColor: 'blue',
+                borderWidth: 1
+            }
+            ]
+        },
+        options: {
+            scales: {
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Valores'
+                    },
+                    beginAtZero: true
+                },
+
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Mês'
+                    }
+                },
+            }
+        }
+    });
+</script>
